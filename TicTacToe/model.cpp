@@ -59,8 +59,7 @@ bool Model::markSquare()
             field[promptPos.first][promptPos.second] = -1; // X
         switchPlayer();
     }
-    //return checkWinner();
-    return false;
+    return checkWinner();
 }
 
 void Model::movePrompt(int direction)
@@ -119,6 +118,7 @@ bool Model::fiveInARow(int yPos, int xPos)
             try {
                 nextSymbol = field.at(yPos).at(xPos + i);
             } catch (std::out_of_range e) {
+                horizontal = false;
                 std::cout << e.what();
                 break;
             }
@@ -133,11 +133,12 @@ bool Model::fiveInARow(int yPos, int xPos)
             try {
                 nextSymbol = field.at(yPos + i).at(xPos);
             } catch (std::out_of_range e) {
+                vertical = false;
                 std::cout << e.what();
                 break;
             }
             if (nextSymbol != startSymbol) {
-                horizontal = false;
+                vertical = false;
                 break;
             }
         }
@@ -147,11 +148,12 @@ bool Model::fiveInARow(int yPos, int xPos)
             try {
                 nextSymbol = field.at(yPos + i).at(xPos + i);
             } catch (std::out_of_range e) {
+                diagonalf = false;
                 std::cout << e.what();
                 break;
             }
             if (nextSymbol != startSymbol) {
-                horizontal = false;
+                diagonalf = false;
                 break;
             }
         }
@@ -161,15 +163,26 @@ bool Model::fiveInARow(int yPos, int xPos)
             try {
                 nextSymbol = field.at(yPos - i).at(xPos - i);
             } catch (std::out_of_range e) {
+                diagonalb = false;
                 std::cout << e.what();
                 break;
             }
             if (nextSymbol != startSymbol) {
-                horizontal = false;
+                diagonalb = false;
                 break;
             }
         }
         return horizontal || vertical || diagonalf || diagonalb;
     }
     return false;
+}
+
+void Model::reset()
+{
+    currentPlayer = -1;
+        for (int i = 0; i < MAP_HEIGHT; ++i) {
+        for (int j = 0; j < MAP_WIDTH; ++j) {
+            field[i][j] = 0;
+        }
+    }
 }

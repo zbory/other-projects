@@ -7,9 +7,9 @@
 
 #include <vector>
 
-const int MAP_WIDTH = 3;
-const int MAP_HEIGHT = 3;
-const int VICTORY = 3;
+const int MAP_WIDTH = 35;
+const int MAP_HEIGHT = 22;
+const int VICTORY = 5;
 
 
 class Model {
@@ -31,7 +31,7 @@ public:
     //0 - UP, 1 - RIGHT, 2 - DOWN, 3 - LEFT
     void movePrompt(int direction);
 
-
+    void reset();
 private:
     int mapWidth = MAP_WIDTH;
     int mapHeight = MAP_HEIGHT;

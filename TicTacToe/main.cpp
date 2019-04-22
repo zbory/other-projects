@@ -12,6 +12,7 @@ int main(int argc, char *args[])
 
     //Main loop flag
     bool quit = false;
+    bool gameEnded = false;
 
     //Event handler
     SDL_Event e;
@@ -37,8 +38,12 @@ int main(int argc, char *args[])
                 if (e.key.keysym.sym == SDLK_LEFT) {
                     (*view.getModel()).movePrompt(3);
                 }
-                if (e.key.keysym.sym == SDLK_SPACE) {
-                    quit = (*view.getModel()).markSquare();
+                if (e.key.keysym.sym == SDLK_SPACE && !gameEnded) {
+                    gameEnded = (*view.getModel()).markSquare();
+                }
+                if (e.key.keysym.sym == SDLK_RETURN) {
+                    (*view.getModel()).reset();
+                    gameEnded = false;
                 }
             }
         }
