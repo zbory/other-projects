@@ -30,6 +30,9 @@ public:
 //Draw match state
     void drawMatch();
 
+//Displays winner
+    void displayWinner(int player);
+
 //Starts up SDL and creates window
     bool init();
 

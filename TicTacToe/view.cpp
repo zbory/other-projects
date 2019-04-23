@@ -82,6 +82,26 @@ void View::drawMatch()
     }
 }
 
+void View::displayWinner(int player)
+{
+    double xCenter = SCREEN_WIDTH / 2.0;
+    double yCenter = SCREEN_HEIGHT / 2.0;
+    double size = 250;
+    SDL_SetRenderDrawColor(gRenderer, 255, 255, 255, 255);
+    SDL_Rect background = {xCenter - size / 2, yCenter - size / 2, size, size};
+    SDL_RenderFillRect(gRenderer, &background);
+
+    if (player == -1) {
+        circleRGBA(gRenderer, xCenter, yCenter, size - 50, 43, 255, 82, 255);
+    } else {
+        SDL_SetRenderDrawColor(gRenderer, 226, 31, 13, 255);
+        SDL_RenderDrawLine(gRenderer, xCenter - (size - 25) / 2, yCenter - (size - 25) / 2, xCenter + (size - 25) / 2,
+                           yCenter + (size - 25) / 2);
+        SDL_RenderDrawLine(gRenderer, xCenter - (size - 25) / 2, yCenter + (size - 25) / 2, xCenter + (size - 25) / 2,
+                           yCenter - (size - 25) / 2);
+    }
+}
+
 bool View::init()
 {
     //Initialize SDL

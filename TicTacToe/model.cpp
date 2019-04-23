@@ -117,7 +117,7 @@ bool Model::fiveInARow(int yPos, int xPos)
             int nextSymbol;
             try {
                 nextSymbol = field.at(yPos).at(xPos + i);
-            } catch (std::out_of_range e) {
+            } catch (std::out_of_range &e) {
                 horizontal = false;
                 std::cout << e.what();
                 break;
@@ -132,7 +132,7 @@ bool Model::fiveInARow(int yPos, int xPos)
             int nextSymbol;
             try {
                 nextSymbol = field.at(yPos + i).at(xPos);
-            } catch (std::out_of_range e) {
+            } catch (std::out_of_range &e) {
                 vertical = false;
                 std::cout << e.what();
                 break;
@@ -147,7 +147,7 @@ bool Model::fiveInARow(int yPos, int xPos)
             int nextSymbol;
             try {
                 nextSymbol = field.at(yPos + i).at(xPos + i);
-            } catch (std::out_of_range e) {
+            } catch (std::out_of_range &e) {
                 diagonalf = false;
                 std::cout << e.what();
                 break;
@@ -162,7 +162,7 @@ bool Model::fiveInARow(int yPos, int xPos)
             int nextSymbol;
             try {
                 nextSymbol = field.at(yPos - i).at(xPos - i);
-            } catch (std::out_of_range e) {
+            } catch (std::out_of_range &e) {
                 diagonalb = false;
                 std::cout << e.what();
                 break;

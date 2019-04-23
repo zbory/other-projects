@@ -58,6 +58,10 @@ int main(int argc, char *args[])
         view.drawPrompt();
         view.drawMatch();
 
+        if(gameEnded){
+            view.displayWinner((*view.getModel()).getCurrentPlayer());
+        }
+
         //Update screen
         SDL_RenderPresent(view.getRenderer());
     }
