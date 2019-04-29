@@ -9,61 +9,6 @@ const int SCREEN_WIDTH = 600;
 const int SCREEN_HEIGHT = 600;
 const int bufferSize = 600;
 
-void drawPixels();
-
-enum State {
-    INCRED,
-    INCGREEN,
-    INCBLUE,
-    DECRED,
-    DECGREEN,
-    DECBLUE,
-};
-
-
-int colorStep = 5;
-State colorState = DECRED;
-
-
-void changeColor(SDL_Color &color)
-{
-    switch (colorState) {
-    case INCGREEN:
-        color.g += colorStep;
-        if (color.g == 255)
-            colorState = DECRED;
-        break;
-    case DECRED:
-        color.r -= colorStep;
-        if (color.r == 0)
-            colorState = INCBLUE;
-        break;
-    case INCBLUE:
-        color.b += colorStep;
-        if (color.b == 255)
-            colorState = DECGREEN;
-        break;
-    case DECGREEN:
-        color.g -= colorStep;
-        if (color.g == 0)
-            colorState = INCRED;
-        break;
-    case INCRED:
-        color.r += colorStep;
-        if (color.r == 255)
-            colorState = DECBLUE;
-        break;
-    case DECBLUE:
-        color.b -= colorStep;
-        if (color.b == 0)
-            colorState = INCGREEN;
-        break;
-    default:
-        break;
-    }
-}
-
-
 //Starts up SDL and creates window
 bool init();
 
