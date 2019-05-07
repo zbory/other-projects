@@ -18,7 +18,7 @@ include_directories(${SDL2_GFX}/inc)
 file(GLOB gfx_inc "${SDL2_GFX}/inc/*.h")
 file(GLOB gfx_src "${SDL2_GFX}/src/*.c")
 
-add_executable(RainbowRipple main.cpp ${gfx_inc} ${gfx_src})
+add_executable(RainbowRipple main.cpp ${gfx_inc} ${gfx_src} colorLookupTable.cpp colorLookupTable.h)
 
 target_link_libraries(RainbowRipple ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES})
 
